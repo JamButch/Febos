@@ -20,6 +20,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     // Aquí puedes añadir plugins de Tailwind CSS si los necesitas
     // require('@tailwindcss/typography'),
     // require('@tailwindcss/forms'),

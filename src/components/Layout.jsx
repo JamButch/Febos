@@ -5,10 +5,12 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-50 font-inter text-gray-800">
+    // Estructura simple con un fondo blanco por defecto.
+    // El Hero ahora manejará su propio fondo.
+    <div className="min-h-screen flex flex-col bg-white font-inter text-gray-800">
       <Header />
-      <main>
-        {children} {/* Aquí se renderizará el contenido de cada página */}
+      <main className="flex-grow">
+        {children}
       </main>
       <Footer />
     </div>

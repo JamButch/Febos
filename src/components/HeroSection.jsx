@@ -1,41 +1,52 @@
 import React from 'react';
-import hero from '../images/hero.png';
-import { Link } from 'gatsby';
+import AnimatedBackground from './AnimatedBackground'; // Importar el fondo
+import herologo from '../images/hero.png'; // Asegúrate de que la ruta sea correcta
 
+// Nota: He quitado las importaciones no usadas para evitar warnings.
 const HeroSection = () => {
   return (
+    // 1. Contenedor principal con 'relative' para anclar el fondo.
+    //    El fondo blanco se aplica aquí para que el texto sea legible.
+    <section className="relative overflow-hidden">
+      
+      {/* 2. El fondo animado se coloca aquí. Se posicionará absolutamente
+             dentro de esta sección. */}
+      <div className="absolute inset-0 z-0">
+        <AnimatedBackground />
+      </div>
 
-    <section className="relative w-full py-20 px-4 text-white
-                        bg-gradient-to-r from-indigo-600 to-purple-600 overflow-hidden">
+      {/* 3. El contenido del Hero se coloca en un contenedor con 'z-10'
+             para asegurarse de que esté por encima del fondo. */}
+      <div className="relative z-10 container mx-auto px-6 py-16 md:py-24">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Columna Izquierda: Contenido de Texto */}
+          <div className="text-center lg:text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+              Somos Transformación Digital
+            </h1>
+            <p className="mt-6 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+              Somos el puente que conecta clientes con proveedores, mediante herramientas y soluciones tecnológicas 100% digitales. De esta forma, estamos ayudando al planeta a reducir el consumo de papel. Con Febos, podrás crear, almacenar y dar seguimiento a tus boletas, facturas, contratos, firmas, entre muchas otras cosas más, de manera digital.
+            </p>
+            <div className="mt-10">
+              <a href="#" className="inline-flex items-center space-x-3 bg-orange-500 text-white font-bold py-4 px-8 rounded-lg shadow-lg text-lg hover:bg-blue-500 transition duration-300 transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+                <span>Comencemos</span>
+              </a>
+            </div>
+          </div>
 
-      <div className="container mx-auto text-left relative z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 max-w-2xl">
-          Optimiza tu gestión digital
-          <br />
-          con <span className="text-yellow-300">Escritorio Digital</span> 
-          <br />by <span className="text-yellow-300">FEBOS</span>
-        </h1>
-        <p className="text-lg md:text-xl max-w-xl mb-10 opacity-90">
-          Libera espacio físico, optimiza la gestión documental y potencia la eficiencia de tu equipo con la solución integral de Febos.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-          <Link to="#sector-privado" className="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition duration-300">
-            Sector Privado
-          </Link>
-          <Link to="#sector-publico" className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition duration-300">
-            Sector Público
-          </Link>
+          {/* Columna Derecha: Imagen */}
+          <div className="mt-10 lg:mt-0">
+            <img 
+              src={herologo} 
+              alt="Ilustración de transformación digital con un planeta y orbes tecnológicos" 
+              className="w-full h-auto" 
+            />
+          </div>
         </div>
       </div>
-
-      <div className="hidden md:block absolute inset-y-0 right-0 w-1/2 md:w-2/5 lg:w-1/3 z-0 pointer-events-none">
-        <img
-          src={hero}
-          alt="Escritorio Digital by FEBOS"
-          className="h-full w-full object-cover object-right"
-        />
-      </div>
-
     </section>
   );
 };
